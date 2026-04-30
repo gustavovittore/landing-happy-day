@@ -342,7 +342,7 @@ export default function Home() {
                     loading="eager"
                     fill
                     sizes="(min-width: 1024px) 42vw, 100vw"
-                    className="object-cover"
+                    className="object-cover lg:object-[50%_32%]"
                   />
                 </div>
               </div>
@@ -499,7 +499,7 @@ export default function Home() {
                   item.featured ? "ring-4 ring-[#A8CF45]/35" : ""
                 }`}
               >
-                <div className="flex h-24 w-24 items-center justify-center rounded-[1.4rem] bg-[#F7FBF8] p-4 shadow-[0_12px_32px_rgba(0,63,96,0.08)]">
+                <div className="flex h-24 w-24 items-center justify-center rounded-[1.4rem] bg-[#F7FBF8] p-4 shadow-[0_12px_32px_rgba(0,63,96,0.08)] lg:h-32 lg:w-32 lg:p-5">
                   <Image src={item.image} alt={item.title} width={96} height={96} className="h-full w-full object-contain" />
                 </div>
                 <h3 className="mt-7 text-2xl font-black leading-tight text-[#12304A]">{item.title}</h3>
