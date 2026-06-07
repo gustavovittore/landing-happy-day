@@ -490,17 +490,13 @@ export default function Home() {
                 <BrandIcon src={iconAssets.agendaVisit} className="w-8 shrink-0" />
                 Agendar visita
               </a>
-              <button
-                type="button"
-                aria-label="Abrir menu"
-                className="fixed left-[calc(min(100vw,390px)_-_72px)] top-6 z-[60] grid h-12 w-12 shrink-0 place-items-center rounded-full border border-[#FFB923] bg-[#061D32]/72 text-white shadow-[0_0_0_1px_rgba(255,185,35,0.18),0_14px_35px_rgba(0,0,0,0.24)] backdrop-blur transition hover:-translate-y-0.5 hover:text-[#FFCC29] sm:left-auto sm:right-6 sm:h-14 sm:w-14 lg:hidden"
+              <a
+                href="#"
+                aria-label="Agendar visita"
+                className="absolute right-3 top-1/2 grid h-12 w-12 shrink-0 -translate-y-1/2 place-items-center rounded-full border border-[#FFE28D] bg-[#FFD45A] text-[#161007] shadow-[0_0_0_2px_rgba(255,204,41,0.22),0_14px_34px_rgba(255,178,21,0.26),inset_0_2px_0_rgba(255,255,255,0.55)] transition hover:scale-[1.03] sm:hidden"
               >
-                <span className="grid gap-1.5">
-                  <span className="h-0.5 w-6 rounded-full bg-current" />
-                  <span className="h-0.5 w-6 rounded-full bg-current" />
-                  <span className="h-0.5 w-6 rounded-full bg-current" />
-                </span>
-              </button>
+                <BrandIcon src={iconAssets.agendaVisit} className="w-7" />
+              </a>
             </div>
           </header>
 
@@ -558,7 +554,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative min-h-[260px] sm:min-h-[430px] lg:min-h-[560px] xl:min-h-[620px]">
+            <div className="relative hidden min-h-[260px] sm:min-h-[430px] lg:block lg:min-h-[560px] xl:min-h-[620px]">
               <Image
                 src={heroAssets.children}
                 alt="Crianças no pátio do Colégio Happy Day em uma moldura de quebra-cabeça"
@@ -598,9 +594,9 @@ export default function Home() {
         <Container>
           <div className="mx-auto max-w-5xl text-center">
             <p className="text-sm font-black uppercase text-[#B66E15]">Confiança para a família</p>
-            <h2 className="mt-5 text-[2.1rem] font-black leading-[1.04] text-[#071B35] sm:text-[4rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            <h2 className="mx-auto mt-5 max-w-[24rem] text-[1.8rem] font-black leading-[1.08] text-[#071B35] sm:max-w-none sm:text-[4rem] sm:leading-[1.04]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
               A escola precisa ser <span className="text-[#C77A12]">bonita</span>{" "}
-              <span className="inline-block">por fora e <span className="text-[#C77A12]">segura</span> por dentro.</span>
+              <span className="inline sm:inline-block">por fora e <span className="text-[#C77A12]">segura</span> por dentro.</span>
             </h2>
             <p className="mx-auto mt-7 max-w-[68rem] text-xl leading-9 text-[#243A54] lg:text-[1.28rem]">
               Por isso, o Colégio Happy Day combina história, apoio pedagógico e acolhimento com uma rotina que respeita a infância sem abrir mão da estrutura que ela precisa para crescer com <strong className="text-[#C77A12]">confiança</strong>.
@@ -621,7 +617,7 @@ export default function Home() {
                 return (
                   <article key={item.title} className={`min-h-[245px] rounded-[1.3rem] border border-[#E8D3B0] border-t-4 ${tone.border} bg-white/88 p-6 text-center shadow-[0_18px_48px_rgba(101,65,24,0.10)] backdrop-blur`}>
                     <div className="mx-auto grid h-24 w-24 place-items-center">
-                      <BrandIcon src={item.icon} className="w-24" />
+                      <BrandIcon src={item.icon} className={item.title === "Ambiente seguro e acolhedor" ? "w-[5.25rem] sm:w-[5.65rem]" : "w-24"} />
                     </div>
                     <h3 className="mt-6 text-2xl font-black leading-tight text-[#071B35]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{item.title}</h3>
                     <p className="mt-4 text-base leading-8 text-[#243A54]">{item.text}</p>
@@ -650,11 +646,11 @@ export default function Home() {
 
           <div className="relative mt-12 rounded-[1.6rem] border border-[#D58A19] bg-[#061B31] p-6 text-white shadow-[0_24px_60px_rgba(4,20,38,0.22)] md:p-9 md:pr-72 lg:pr-80">
             <Image src={sectionAssets.reasonsPuzzle} alt="" width={360} height={285} className="absolute right-0 top-[43%] z-10 hidden w-[21rem] -translate-y-1/2 drop-shadow-[0_22px_34px_rgba(0,0,0,0.24)] md:block lg:-right-2 lg:w-[23rem]" />
-            <div className="grid gap-6 md:grid-cols-[180px_1fr] md:items-center">
-              <div className="grid h-32 w-32 place-items-center">
-                <BrandIcon src={iconAssets.reasonsFeature} className="w-32" />
+            <div className="grid gap-5 md:grid-cols-[180px_1fr] md:items-center md:gap-6">
+              <div className="grid h-24 w-24 place-items-center md:h-32 md:w-32">
+                <BrandIcon src={iconAssets.reasonsFeature} className="w-24 md:w-32" />
               </div>
-              <p className="max-w-xl text-3xl font-black leading-tight md:text-[2.45rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+              <p className="max-w-xl text-[1.55rem] font-black leading-[1.12] sm:text-3xl md:text-[2.45rem] md:leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
                 Leveza para a <span className="text-[#FFB923]">criança</span>, clareza para os <span className="text-[#FFB923]">responsáveis</span>.
               </p>
             </div>
@@ -682,7 +678,7 @@ export default function Home() {
             <div className="grid h-28 w-28 place-items-center">
               <BrandIcon src={iconAssets.reasonsCta} className="w-28" />
             </div>
-            <p className="text-3xl font-black leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            <p className="text-[1.85rem] font-black leading-tight sm:text-3xl" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
               Mais do que uma escola, um lugar que faz parte da <span className="text-[#FFB923]">história da sua família.</span>
             </p>
             <a href="#" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-[#FFE28D] bg-[#FFD45A] px-8 py-4 text-base font-black text-[#161007] shadow-[0_16px_34px_rgba(255,185,35,0.22)] transition hover:-translate-y-0.5">
@@ -701,11 +697,10 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <div className="lg:pt-8">
               <p className="text-sm font-black uppercase text-[#C77A12]">Ambientes e experiências</p>
-              <h2 className="mt-5 max-w-[40rem] text-[2.35rem] font-black leading-[1.06] text-[#071B35] sm:text-[3.35rem] lg:text-[3.2rem] xl:text-[3.45rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+              <h2 className="mt-5 max-w-[40rem] text-[2.1rem] font-black leading-[1.08] text-[#071B35] sm:text-[3.35rem] sm:leading-[1.06] lg:text-[3.2rem] xl:text-[3.45rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
                 <span className="block">A infância aprende</span>
-                <span className="block">melhor quando</span>
-                <span className="block">tem <span className="text-[#C77A12]">espaço para</span></span>
-                <span className="block text-[#C77A12]">viver.</span>
+                <span className="block">melhor quando tem</span>
+                <span className="block text-[#C77A12]">espaço para viver.</span>
               </h2>
               <p className="mt-7 max-w-2xl text-xl leading-9 text-[#243A54]">Fotos reais, rotina viva e ambientes que acolhem movimento, conversa, arte, natureza e descobertas.</p>
             </div>
@@ -749,8 +744,8 @@ export default function Home() {
           </div>
 
           <div className="mt-8 grid gap-6 rounded-[1.35rem] border border-[#D58A19] bg-[#061B31] p-7 text-white shadow-[0_24px_60px_rgba(4,20,38,0.18)] md:grid-cols-[140px_1fr_auto] md:items-center">
-            <BrandIcon src={iconAssets.environments.welcome} className="w-28" />
-            <p className="text-3xl font-black leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            <BrandIcon src={iconAssets.environments.welcome} className="w-24 md:w-28" />
+            <p className="text-[1.7rem] font-black leading-[1.12] sm:text-3xl sm:leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
               Ambientes que <span className="text-[#FFB923]">acolhem</span>, experiências que <span className="text-[#FFB923]">transformam</span>.
             </p>
             <a href="#" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-[#FFE28D] bg-[#FFD45A] px-8 py-4 text-base font-black text-[#161007] shadow-[0_16px_34px_rgba(255,185,35,0.22)] transition hover:-translate-y-0.5">
@@ -769,7 +764,7 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
             <div>
               <p className="text-sm font-black uppercase text-[#FFCC29]">Metodologia</p>
-              <h2 className="mt-6 max-w-[38rem] text-[2.35rem] font-black leading-[1.06] text-white sm:text-[3.05rem] lg:text-[3.05rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", textShadow: "0 16px 42px rgba(0,0,0,0.34)" }}>
+              <h2 className="mt-6 max-w-[38rem] text-[2.05rem] font-black leading-[1.08] text-white sm:text-[3.05rem] sm:leading-[1.06] lg:text-[3.05rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif", textShadow: "0 16px 42px rgba(0,0,0,0.34)" }}>
                 <span className="block">Brincar, investigar</span>
                 <span className="block">e conviver fazem</span>
                 <span className="block">parte do <span className="text-[#FFB923]">mesmo</span></span>
@@ -802,7 +797,7 @@ export default function Home() {
                     <div className="mx-auto grid h-24 w-24 place-items-center">
                       <BrandIcon src={iconAssets.methodology[index]} className="w-24" />
                     </div>
-                    <h3 className="mt-7 text-4xl font-black" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{title}</h3>
+                    <h3 className="mt-7 text-3xl font-black sm:text-4xl" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{title}</h3>
                     <p className="mt-5 text-[1.05rem] leading-8 text-[#243A54]">{text}</p>
                     <span className="mx-auto mt-8 block h-px w-32 bg-[#D58A19]" />
                   </article>
@@ -821,7 +816,7 @@ export default function Home() {
         <Container>
           <div className="mx-auto max-w-5xl text-center">
             <p className="text-sm font-black uppercase text-[#0098DA]">Diferenciais</p>
-            <h2 className="mt-5 text-[2.35rem] font-black leading-[1.04] text-[#071B35] sm:text-[4rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+            <h2 className="mt-5 text-[2.05rem] font-black leading-[1.08] text-[#071B35] sm:text-[4rem] sm:leading-[1.04]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
               Recursos importantes com direção pedagógica e cuidado humano.
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-xl leading-9 text-[#243A54]">Tecnologia, base educacional, valores e equipe preparada aparecem de forma integrada, sem perder o acolhimento da infância.</p>
@@ -856,7 +851,7 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <p className="text-sm font-black uppercase text-[#C77A12]">Unidades</p>
-              <h2 className="mt-5 max-w-[38rem] text-[2.35rem] font-black leading-[1.06] text-[#071B35] sm:text-[3.3rem] lg:text-[2.35rem] xl:text-[2.7rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+              <h2 className="mt-5 max-w-[38rem] text-[2.1rem] font-black leading-[1.08] text-[#071B35] sm:text-[3.3rem] sm:leading-[1.06] lg:text-[2.35rem] xl:text-[2.7rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
                 <span className="block">Quatro endereços</span>
                 <span className="block">com a mesma essência</span>
                 <em className="block font-black">Happy Day.</em>
@@ -872,7 +867,7 @@ export default function Home() {
                     <div className={`grid h-16 w-16 place-items-center rounded-full border ${tone.text} ${tone.soft}`}>
                       <LineIcon type="location" className="h-10 w-10" />
                     </div>
-                    <h3 className="mt-6 text-4xl font-black text-[#071B35]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{unit}</h3>
+                    <h3 className="mt-6 text-[2.1rem] font-black leading-tight text-[#071B35] sm:text-4xl" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{unit}</h3>
                     <span className={`mt-5 block h-0.5 w-16 rounded-full ${tone.bg}`} />
                     <p className="mt-5 text-[1.05rem] leading-8 text-[#243A54]">Atendimento próximo para orientar sua visita e tirar dúvidas com calma.</p>
                   </article>
@@ -880,8 +875,7 @@ export default function Home() {
               })}
             </div>
           </div>
-          <div className="mt-12 grid gap-6 rounded-[1.2rem] border border-[#E8D3B0] bg-white/82 p-7 shadow-[0_20px_54px_rgba(96,65,25,0.10)] backdrop-blur md:grid-cols-[90px_1fr_auto] md:items-center">
-            <LineIcon type="people" className="h-16 w-16 text-[#C77A12]" />
+          <div className="mt-12 grid gap-6 rounded-[1.2rem] border border-[#E8D3B0] bg-white/82 p-7 shadow-[0_20px_54px_rgba(96,65,25,0.10)] backdrop-blur md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <h3 className="text-2xl font-black text-[#071B35]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>Estamos prontos para receber você e sua família.</h3>
               <p className="mt-2 text-lg text-[#536B7B]">Fale com nossa equipe e agende sua visita.</p>
@@ -956,7 +950,7 @@ export default function Home() {
             <div className="rounded-[1.45rem] border border-[#E8D3B0] bg-white/88 p-7 shadow-[0_24px_70px_rgba(96,65,25,0.10)] backdrop-blur md:p-12">
               <Image src={logo} alt="Colégio Happy Day" width={290} height={70} className="h-auto w-56" />
               <BrandRail className="mt-8 h-2" />
-              <h2 className="mt-9 text-[2.3rem] font-black leading-[1.06] text-[#071B35] sm:text-[3.7rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+              <h2 className="mt-9 text-[2.05rem] font-black leading-[1.08] text-[#071B35] sm:text-[3.7rem] sm:leading-[1.06]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
                 Venha conhecer uma escola onde seu filho pode se sentir em casa.
               </h2>
               <span className="mt-8 block h-px w-24 bg-[#C77A12]" />
