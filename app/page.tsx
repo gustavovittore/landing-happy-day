@@ -101,7 +101,24 @@ const reasonPuzzleNumbers = Array.from(
   (_, index) => `/brand/puzzle-${String(index + 1).padStart(2, "0")}.png.png`,
 );
 
-const units = ["Vila Mariana", "Vila das Mercês", "Utinga", "Progresso"];
+const units = [
+  {
+    name: "Vila Mariana",
+    address: "R. Santa Cruz, 1971 - Vila Mariana, São Paulo - SP, 05220-040",
+  },
+  {
+    name: "Vila das Mercês",
+    address: "R. Maria da Conceição Maciel de Barros, 135 - Vila Vera, São Paulo - SP, 04295-030",
+  },
+  {
+    name: "Utinga",
+    address: "R. Londres, 651 - Utinga, Santo André - SP, 09220-320",
+  },
+  {
+    name: "Progresso",
+    address: "R. Adamantina, 142 - Vila Bela Vista, Santo André - SP, 09181-000",
+  },
+];
 
 const navItems = [
   ["A Escola", "#"],
@@ -745,8 +762,15 @@ export default function Home() {
 
           <div className="mt-8 grid gap-6 rounded-[1.35rem] border border-[#D58A19] bg-[#061B31] p-7 text-white shadow-[0_24px_60px_rgba(4,20,38,0.18)] md:grid-cols-[140px_1fr_auto] md:items-center">
             <BrandIcon src={iconAssets.environments.welcome} className="w-24 md:w-28" />
-            <p className="text-[1.7rem] font-black leading-[1.12] sm:text-3xl sm:leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
-              Ambientes que <span className="text-[#FFB923]">acolhem</span>, experiências que <span className="text-[#FFB923]">transformam</span>.
+            <p className="text-[1.58rem] font-black leading-[1.12] sm:text-3xl sm:leading-tight" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+              <span className="sm:hidden">
+                <span className="block">Ambientes que</span>
+                <span className="block"><span className="text-[#FFB923]">acolhem</span>, experiências</span>
+                <span className="block">que <span className="text-[#FFB923]">transformam</span>.</span>
+              </span>
+              <span className="hidden sm:inline">
+                Ambientes que <span className="text-[#FFB923]">acolhem</span>, experiências que <span className="text-[#FFB923]">transformam</span>.
+              </span>
             </p>
             <a href="#" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full border border-[#FFE28D] bg-[#FFD45A] px-8 py-4 text-base font-black text-[#161007] shadow-[0_16px_34px_rgba(255,185,35,0.22)] transition hover:-translate-y-0.5">
               <BrandIcon src={iconAssets.agendaVisit} className="w-8 shrink-0" />
@@ -851,9 +875,9 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <div>
               <p className="text-sm font-black uppercase text-[#C77A12]">Unidades</p>
-              <h2 className="mt-5 max-w-[38rem] text-[2.1rem] font-black leading-[1.08] text-[#071B35] sm:text-[3.3rem] sm:leading-[1.06] lg:text-[2.35rem] xl:text-[2.7rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
-                <span className="block">Quatro endereços</span>
-                <span className="block">com a mesma essência</span>
+              <h2 className="mt-5 max-w-[22rem] text-[1.95rem] font-black leading-[1.04] text-[#071B35] sm:max-w-[38rem] sm:text-[3.3rem] sm:leading-[1.06] lg:text-[2.35rem] xl:text-[2.7rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>
+                <span className="block whitespace-nowrap">Quatro endereços</span>
+                <span className="block whitespace-nowrap">com a mesma essência</span>
                 <em className="block font-black">Happy Day.</em>
               </h2>
               <span className="mt-9 block h-1 w-16 rounded-full bg-[#FFCC29]" />
@@ -863,13 +887,14 @@ export default function Home() {
               {units.map((unit, index) => {
                 const tone = toneStyles[index % toneStyles.length];
                 return (
-                  <article key={unit} className={`min-h-[255px] rounded-[1.25rem] border border-[#E8D3B0] border-t-4 ${tone.border} bg-white/88 p-8 shadow-[0_20px_54px_rgba(96,65,25,0.10)]`}>
+                  <article key={unit.name} className={`min-h-[255px] rounded-[1.25rem] border border-[#E8D3B0] border-t-4 ${tone.border} bg-white/88 p-8 shadow-[0_20px_54px_rgba(96,65,25,0.10)]`}>
                     <div className={`grid h-16 w-16 place-items-center rounded-full border ${tone.text} ${tone.soft}`}>
                       <LineIcon type="location" className="h-10 w-10" />
                     </div>
-                    <h3 className="mt-6 text-[2.1rem] font-black leading-tight text-[#071B35] sm:text-4xl" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{unit}</h3>
+                    <h3 className="mt-6 text-[1.95rem] font-black leading-tight text-[#071B35] sm:text-[2.2rem]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{unit.name}</h3>
                     <span className={`mt-5 block h-0.5 w-16 rounded-full ${tone.bg}`} />
                     <p className="mt-5 text-[1.05rem] leading-8 text-[#243A54]">Atendimento próximo para orientar sua visita e tirar dúvidas com calma.</p>
+                    <p className="mt-4 text-sm font-semibold leading-6 text-[#6B7F8F]">{unit.address}</p>
                   </article>
                 );
               })}
@@ -983,11 +1008,14 @@ export default function Home() {
               <p className="text-center text-2xl font-black uppercase text-[#FFCC29]" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>Unidades</p>
               <div className="mt-8 grid gap-4">
                 {units.map((unit) => (
-                  <div key={unit} className="flex items-center gap-5 rounded-[1rem] border border-[#D58A19]/55 bg-white/5 px-5 py-4 backdrop-blur">
+                  <div key={unit.name} className="flex items-start gap-4 rounded-[1rem] border border-[#D58A19]/55 bg-white/5 px-5 py-4 backdrop-blur">
                     <span className="grid h-12 w-12 place-items-center rounded-full bg-white/8 text-[#FFCC29]">
                       <LineIcon type="location" className="h-8 w-8" />
                     </span>
-                    <p className="text-2xl font-black">{unit}</p>
+                    <div>
+                      <p className="text-xl font-black leading-tight">{unit.name}</p>
+                      <p className="mt-2 text-sm font-medium leading-6 text-white/68">{unit.address}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -1000,6 +1028,18 @@ export default function Home() {
           </div>
         </Container>
       </footer>
+      <section className="bg-[#020B16] py-5 text-white">
+        <Container>
+          <div className="flex flex-col items-center gap-3 border-t border-[#D58A19]/35 pt-5 text-center text-sm font-medium text-white/68 md:flex-row md:justify-between md:text-left">
+            <p>Copyright © 2026 Colégio Happy Day | Todos os direitos reservados.</p>
+            <div className="flex items-center gap-2 text-white/76">
+              <a href="#" className="transition hover:text-[#FFCC29]">Políticas de privacidade</a>
+              <span className="text-[#D58A19]/80">|</span>
+              <a href="#" className="transition hover:text-[#FFCC29]">Termos de uso</a>
+            </div>
+          </div>
+        </Container>
+      </section>
     </main>
   );
 }
